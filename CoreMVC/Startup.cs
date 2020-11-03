@@ -24,6 +24,7 @@ namespace CoreMVC
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["DietTherapyDbContext"]));
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
             services.AddScoped<IDietRepository, SQLDietRepository>();
+            services.AddScoped<IRecipeRepository, SQLRecipeRepository>();
             services.AddControllersWithViews();
         }
 

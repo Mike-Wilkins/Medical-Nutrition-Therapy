@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace DataLayer
+namespace DataLayer.Models
 {
     public class Recipe
     {
@@ -13,16 +13,16 @@ namespace DataLayer
         public string Name { get; set; }
 
 
-        public int Calories { get; set; }
-        public int Carbohydrates { get; set; }
-        public int Fat { get; set; }
-        public int Fiber { get; set; }
-        public int Protein { get; set; }
+        public string Calories { get; set; }
+        public string Carbohydrates { get; set; }
+        public string Fat { get; set; }
+        public string Fiber { get; set; }
+        public string Protein { get; set; }
 
         [DisplayName("Saturated Fat")]
-        public int SaturatedFat { get; set; }
-        public int Sodium { get; set; }
-        public int Sugar { get; set; }
+        public string SaturatedFat { get; set; }
+        public string Sodium { get; set; }
+        public string Sugar { get; set; }
 
         public int DietId { get; set; }
         public string DietType { get; set; }

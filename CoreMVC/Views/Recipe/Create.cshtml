@@ -1,0 +1,109 @@
+﻿@model DataLayer.Models.Recipe
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Recipe</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div id="recipeItemsContainer">
+                @Html.EditorFor(model => model.Items)
+            </div>
+
+            <div class="form-group">
+                <input class="btn btn-primary" type="button" id="btnAdd" value="Add Ingredient" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Calories" class="control-label"></label>
+                <input asp-for="Calories" class="form-control" />
+                <span asp-validation-for="Calories" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Carbohydrates" class="control-label"></label>
+                <input asp-for="Carbohydrates" class="form-control" />
+                <span asp-validation-for="Carbohydrates" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fat" class="control-label"></label>
+                <input asp-for="Fat" class="form-control" />
+                <span asp-validation-for="Fat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fiber" class="control-label"></label>
+                <input asp-for="Fiber" class="form-control" />
+                <span asp-validation-for="Fiber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Protein" class="control-label"></label>
+                <input asp-for="Protein" class="form-control" />
+                <span asp-validation-for="Protein" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SaturatedFat" class="control-label"></label>
+                <input asp-for="SaturatedFat" class="form-control" />
+                <span asp-validation-for="SaturatedFat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sodium" class="control-label"></label>
+                <input asp-for="Sodium" class="form-control" />
+                <span asp-validation-for="Sodium" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sugar" class="control-label"></label>
+                <input asp-for="Sugar" class="form-control" />
+                <span asp-validation-for="Sugar" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="DietId" class="control-label"></label>
+                <input asp-for="DietId" class="form-control" />
+                <span asp-validation-for="DietId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DietType" class="control-label"></label>
+                <input asp-for="DietType" class="form-control" />
+                <span asp-validation-for="DietType" class="text-danger"></span>
+            </div>*@
+           
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $("#btnAdd").on('click', function () {
+            $.ajax({
+                async: true,
+                data: $('#form').serialize(),
+                type: "POST",
+                url: '/Recipe/AddRecipeItem',
+                success: function (partialView) {
+                    console.log("partialView: "+partialView);
+                    $('#recipeItemsContainer').html(partialView);
+                }
+            });
+        });
+    </script>
+
+}
