@@ -7,45 +7,15 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped table-hover">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
+            <th><h6>Name</h6></th>
             <th><h6>Ingredients</h6></th>
-            <th>
-                @Html.DisplayNameFor(model => model.Calories)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Carbohydrates)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fiber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Protein)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SaturatedFat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sodium)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sugar)
-            </th>
-            @*<th>
-            @Html.DisplayNameFor(model => model.DietId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DietType)
-        </th>*@
+            <th><h6>Nutritional Information</h6></th>
+          
             <th></th>
         </tr>
     </thead>
@@ -69,42 +39,52 @@
             </td>
 
 
-
             <td>
+                <span style="color:#8ce0fa">
+                    @Html.DisplayNameFor(model => model.Calories):&nbsp;&nbsp;&nbsp;
+                </span>
                 @Html.DisplayFor(modelItem => item.Calories)
-            </td>
-            <td>
+                <br />
+                <span style="color:#8ce0fa">
+                    @Html.DisplayNameFor(model => model.Carbohydrates):&nbsp;&nbsp;&nbsp;
+                </span>
                 @Html.DisplayFor(modelItem => item.Carbohydrates)
-            </td>
-            <td>
+                <br />
+                <span style="color:#8ce0fa">
+                    @Html.DisplayNameFor(model => model.Fat):&nbsp;&nbsp;&nbsp;
+                </span>
                 @Html.DisplayFor(modelItem => item.Fat)
-            </td>
-            <td>
+                <span style="color:#8ce0fa">
+                <br />
+                    @Html.DisplayNameFor(model => model.Fiber):&nbsp;&nbsp;&nbsp;
+                </span>
                 @Html.DisplayFor(modelItem => item.Fiber)
-            </td>
-            <td>
+                <br />
+                <span style="color:#8ce0fa">
+                    @Html.DisplayNameFor(model => model.Protein):&nbsp;&nbsp;&nbsp;
+                </span>
                 @Html.DisplayFor(modelItem => item.Protein)
-            </td>
-            <td>
+                <br />
+                <span style="color:#8ce0fa">
+                    @Html.DisplayNameFor(model => model.SaturatedFat):&nbsp;&nbsp;&nbsp;
+                </span>
                 @Html.DisplayFor(modelItem => item.SaturatedFat)
-            </td>
-            <td>
+                <br />
+                <span style="color:#8ce0fa">
+                    @Html.DisplayNameFor(model => model.Sodium):&nbsp;&nbsp;&nbsp;
+                </span>
                 @Html.DisplayFor(modelItem => item.Sodium)
-            </td>
-            <td>
+                <br />
+                <span style="color:#8ce0fa">
+                    @Html.DisplayNameFor(model => model.Sugar):&nbsp;&nbsp;&nbsp;
+                </span>
                 @Html.DisplayFor(modelItem => item.Sugar)
             </td>
-
-            @*<td>
-            @Html.DisplayFor(modelItem => item.DietId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DietType)
-        </td>*@
+ 
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm" style="margin-left:5px">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm" style="margin-left:5px">Delete</a>
             </td>
         </tr>
 }

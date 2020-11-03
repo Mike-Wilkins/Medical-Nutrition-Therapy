@@ -35,7 +35,7 @@ namespace CoreMVC.Controllers
 
         //POST: Recipe/Create
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Name, Items, Calories, Carbohydrates, Fat, Fiber, Protein, SaturatedFat, Sodium, Sugar")] Recipe recipe)
+        public async Task<IActionResult> Create([Bind("Name, Items, Calories, Carbohydrates, Fat, Fiber, Protein, SaturatedFat, Sodium, Sugar, DietId, DietType")] Recipe recipe)
         {
             await _db.Add(recipe);
             var recipeList = await _db.GetAllRecipes();
