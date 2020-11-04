@@ -21,6 +21,8 @@ namespace CoreMVC.Controllers
         public async Task<IActionResult> Index(int id)
         {
             ViewBag.DietId = id;
+            var dietType = _db.GetDietType(id);
+            ViewBag.DietType = dietType.Name;
             var recipeList = await _db.GetAllRecipes(id);
            
             return View(recipeList);
@@ -28,8 +30,12 @@ namespace CoreMVC.Controllers
         //GET: Recipe/Create
         public IActionResult Create(int id)
         {
+            ViewBag.DietId = id;
             var model = new Recipe();
             model.Items.Add(new RecipeItem());
+            var dietType = _db.GetDietType(id);
+            ViewBag.DietType = dietType.Name;
+            model.DietType = dietType.Name;
             model.DietId = id;
 
             return View(model);
@@ -39,9 +45,12 @@ namespace CoreMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([Bind("Name, Items, Calories, Carbohydrates, Fat, Fiber, Protein, SaturatedFat, Sodium, Sugar, DietId, DietType")] Recipe recipe, int id)
         {
+            ViewBag.DietType = recipe.DietType;
             recipe.DietId = id;
+            ViewBag.DietId = id;
             await _db.Add(recipe);
-            var recipeList = await _db.GetAllRecipes(recipe.Id);
+            var recipeList = await _db.GetAllRecipes(recipe.DietId);
+
             return View("Index", recipeList);
         }
 
@@ -51,5 +60,14 @@ namespace CoreMVC.Controllers
             recipe.Items.Add(new RecipeItem());
             return PartialView("RecipeItems", recipe);
         }
+
+        //GET: Recipe/Delete
+        public async Task<IActionResult> Delete(int id)
+        {
+            var recipe = await _db.GetRecipe(id);
+
+            return View(recipe);
+        }
+        //POST: Recipe/Delete
     }
 }

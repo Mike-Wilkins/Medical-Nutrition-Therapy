@@ -37,6 +37,12 @@ namespace DataLayer.Repositories
             return recipeList;
         }
 
+        public DietType GetDietType(int id)
+        {
+            var dietType = _context.DietTypes.Where(m => m.Id == id).FirstOrDefault();
+            return dietType;
+        }
+
         public async Task<Recipe> GetRecipe(int id)
         {
             var recipe = await _context.Recipes.Where(m => m.Id == id).FirstOrDefaultAsync();
@@ -50,5 +56,6 @@ namespace DataLayer.Repositories
             _context.SaveChanges();
             return recipe;
         }
+
     }
 }
