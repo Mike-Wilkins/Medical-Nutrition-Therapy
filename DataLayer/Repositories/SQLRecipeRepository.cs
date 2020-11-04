@@ -31,9 +31,9 @@ namespace DataLayer.Repositories
             return recipe;
         }
 
-        public async Task<IEnumerable<Recipe>> GetAllRecipes()
+        public async Task<IEnumerable<Recipe>> GetAllRecipes(int id)
         {
-            var recipeList = await _context.Recipes.Include(m => m.Items).ToListAsync();
+            var recipeList = await _context.Recipes.Include(m => m.Items).Where(m => m.DietId == id).ToListAsync();
             return recipeList;
         }
 

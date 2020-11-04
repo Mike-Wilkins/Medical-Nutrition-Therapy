@@ -12,6 +12,6 @@ namespace DataLayer.Repositories
         Task<Recipe> Delete(int id);
         Recipe Update(Recipe recipe);
         Task<Recipe> GetRecipe(int id);
-        Task<IEnumerable<Recipe>> GetAllRecipes();
+        Task<IEnumerable<Recipe>> GetAllRecipes(int id);
     }
 }
