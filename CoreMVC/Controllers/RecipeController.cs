@@ -1,7 +1,6 @@
 ﻿using DataLayer.Models;
 using DataLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CoreMVC.Controllers
@@ -59,7 +58,7 @@ namespace CoreMVC.Controllers
         //GET: Recipe/Delete
         public async Task<IActionResult> Delete(int id)
         {
-            
+
             var recipe = await _db.GetRecipe(id);
             ViewBag.DietId = recipe.DietId;
             return View(recipe);
