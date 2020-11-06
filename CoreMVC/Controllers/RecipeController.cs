@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DataLayer;
-using DataLayer.Models;
+﻿using DataLayer.Models;
 using DataLayer.Repositories;
-using DataLayer.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CoreMVC.Controllers
 {
@@ -24,7 +19,7 @@ namespace CoreMVC.Controllers
             var dietType = _db.GetDietType(id);
             ViewBag.DietType = dietType.Name;
             var recipeList = await _db.GetAllRecipes(id);
-           
+
             return View(recipeList);
         }
         //GET: Recipe/Create
