@@ -59,10 +59,38 @@ namespace CoreMVC.Controllers
         //GET: Recipe/Delete
         public async Task<IActionResult> Delete(int id)
         {
+            
             var recipe = await _db.GetRecipe(id);
-
+            ViewBag.DietId = recipe.DietId;
             return View(recipe);
         }
         //POST: Recipe/Delete
+        [HttpPost]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeleteRecipe(int id)
+        {
+            var recipe = await _db.GetRecipe(id);
+            ViewBag.DietId = recipe.DietId;
+            await _db.Delete(id);
+            var recipeList = await _db.GetAllRecipes(recipe.DietId);
+            return View("Index", recipeList);
+        }
+
+        //GET: Recipe/Edit
+        public async Task<IActionResult> Edit(int id)
+        {
+            var recipe = await _db.GetRecipe(id);
+            ViewBag.DietId = recipe.DietId;
+            return View(recipe);
+        }
+        //POST: Recipe/Edit
+        [HttpPost]
+        public async Task<IActionResult> Edit(Recipe recipe)
+        {
+            ViewBag.DietId = recipe.DietId;
+            _db.Update(recipe);
+            var recipeList = await _db.GetAllRecipes(recipe.DietId);
+            return View("Index", recipeList);
+        }
     }
 }

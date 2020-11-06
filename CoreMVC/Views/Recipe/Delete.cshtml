@@ -76,7 +76,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" />
-        <a asp-action="Index" class="btn btn-primary" style="margin-left: 5px">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-danger" id="@Model.DietId" />
+        <a asp-action="Index" asp-route-id="@ViewBag.DietId" class="btn btn-primary" style="margin-left: 5px">Back to List</a>
     </form>
 </div>

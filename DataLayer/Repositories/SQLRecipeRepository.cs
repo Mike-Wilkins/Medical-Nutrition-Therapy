@@ -1,10 +1,8 @@
 ﻿using DataLayer.Models;
 using DataLayer.Services;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DataLayer.Repositories
@@ -25,7 +23,7 @@ namespace DataLayer.Repositories
 
         public async Task<Recipe> Delete(int id)
         {
-            var recipe = await _context.Recipes.Where(m => m.Id == id).FirstOrDefaultAsync();
+            var recipe = await _context.Recipes.Where(m => m.Id == id).Include(m => m.Items).FirstOrDefaultAsync();
             _context.Recipes.Remove(recipe);
             await _context.SaveChangesAsync();
             return recipe;
@@ -51,7 +49,7 @@ namespace DataLayer.Repositories
 
         public Recipe Update(Recipe recipe)
         {
-           var recipeUpdate = _context.Recipes.Attach(recipe);
+            var recipeUpdate = _context.Recipes.Attach(recipe);
             recipeUpdate.State = EntityState.Modified;
             _context.SaveChanges();
             return recipe;
