@@ -62,8 +62,41 @@ namespace DataLayer.Tests
             Assert.Equal("Bland Diet", test.Name);
         }
 
+        [Fact]
+        public async void SQLDietRepository_Should_Delete_DietType_By_ID()
+        {
+            IDietRepository sut = GetInMemoryDietRepository();
+            List<DietType> dietType = DietTypeInMemoryDb();
 
+            DietType savedDietType1 = await sut.Add(dietType[0]);
+            DietType savedDietType2 = await sut.Add(dietType[1]);
 
+            var deleteDietType = await sut.Delete(savedDietType1.Id);
+            Assert.Single(await sut.GetAllDiets());
+            var remainingDietType = await sut.GetDiet(savedDietType2.Id);
+            Assert.Equal(2, remainingDietType.Id);
+            Assert.Equal("Carb-counting Diet", remainingDietType.Name);
+        }
+
+        [Fact]
+        public async void SQLDietRepository_Should_Update_DietType_By_Id()
+        {
+            IDietRepository sut = GetInMemoryDietRepository();
+            List<DietType> dietType = DietTypeInMemoryDb();
+
+            DietType savedDietType = await sut.Add(dietType[0]);
+
+            Assert.Equal(1, savedDietType.Id);
+            Assert.Equal("Bland Diet", savedDietType.Name);
+
+            savedDietType.Name = "Bland Diet EDITED";
+
+            var updateDietType = sut.Update(savedDietType);
+            var getUpdateDietType = await sut.GetDiet(updateDietType.Id);
+
+            Assert.Equal(1, getUpdateDietType.Id);
+            Assert.Equal("Bland Diet EDITED", getUpdateDietType.Name);
+        }
 
         private IDietRepository GetInMemoryDietRepository()
         {
