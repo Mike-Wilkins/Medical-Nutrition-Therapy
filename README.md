@@ -7,5 +7,6 @@ The Medical Nutrition Therapy project is an ASP.NET MVC Web API which creates a 
 | Verb | url                 |                      Description                               |
 |:----:|:-------------------:|:--------------------------------------------------------------:|
 | GET  | recipe/all          | Retrieve all recipe lists from all diet types                  |
+
 |:----:|:-------------------:|:--------------------------------------------------------------:|
 | GET  | recipe/id           | Retrieve a specific recipe by id                               |
