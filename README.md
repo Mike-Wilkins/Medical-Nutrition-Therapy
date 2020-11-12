@@ -13,3 +13,5 @@ The route table for the API is as follows:
 | POST   | recipe/create           | Create a new recipe                                            |
 | DELETE | recipe/delete/id        | Delete an existing recipe                                      |
 | PUT    | recipe/update/id        | Update an existing recipe                                      |
+
+![Output sample](https://github.com/Mike-Wilkins/TissueSampleRecords/blob/master/TissueSampleApp2.gif)
