@@ -1,12 +1,15 @@
-﻿using DataLayer.Models;
+﻿using CoreMVC.Models;
+using DataLayer.Models;
 using DataLayer.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CoreMVC.Controllers
 {
     public class RecipeController : Controller
     {
+
         private IRecipeRepository _db;
         public RecipeController(IRecipeRepository db)
         {
@@ -39,6 +42,11 @@ namespace CoreMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([Bind("Name, Items, Calories, Carbohydrates, Fat, Fiber, Protein, SaturatedFat, Sodium, Sugar, DietId, DietType")] Recipe recipe, int id)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
             ViewBag.DietType = recipe.DietType;
             recipe.DietId = id;
             ViewBag.DietId = id;

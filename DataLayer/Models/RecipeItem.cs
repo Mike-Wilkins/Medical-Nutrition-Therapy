@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataLayer.Models
 {
@@ -6,6 +7,7 @@ namespace DataLayer.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         public string Ingredient { get; set; }
     }
 }
