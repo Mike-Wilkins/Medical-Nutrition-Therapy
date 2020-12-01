@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
             return recipe;
         }
 
-        [HttpPost("delete/{id}")]
+        [HttpDelete("delete/{id}")]
         public ActionResult<Recipe> DeleteRecipe(int id)
         {
             var recipe = _context.Recipes.Where(m => m.Id == id).FirstOrDefault();
