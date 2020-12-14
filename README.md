@@ -16,4 +16,4 @@ The route table for the API is as follows:
 
 ![Output_sample](https://github.com/Mike-Wilkins/Medical-Nutrition-Therapy/blob/master/MNT_Demo.gif)
 
-![Output sample](https://github.com/Mike-Wilkins/Medical-Nutrition-Therapy/blob/master/TissueSampleApp2.gif)
+
