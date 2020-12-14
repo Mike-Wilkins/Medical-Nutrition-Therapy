@@ -13,7 +13,10 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3" style="height:100px">
             <div class="container">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="@("~/images/MNTLogo.png")" asp-append-version="true" height="70" /></a>
                 <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Medical Nutrition Therapy</a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,13 +24,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index" style="margin-left:450px; font-size:20px">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy" style="font-size:20px">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="DietType" asp-action="Index">Diets</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="DietType" asp-action="Index" style="font-size:20px">Diets</a>
                         </li>
                     </ul>
                 </div>
